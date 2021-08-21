@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+const si = require('systeminformation');
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  async getHello() {
+    let data = await si.cpu()
+    return data
   }
 }

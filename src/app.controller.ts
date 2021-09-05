@@ -15,6 +15,19 @@ export class AppController {
     }
   }
 
+  @Get("/onoff")
+  async onOff(){
+    try {
+      let res = await this.appService.turnOn()
+      return res
+    } catch (error) {
+      return {
+        status:400,
+        message:error
+      }
+    }
+  }
+
 
 
 }

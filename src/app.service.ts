@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 const si = require('systeminformation');
 const Gpio = require('onoff').Gpio;
+var LED = new Gpio(3, 'out');
 
 @Injectable()
 export class AppService {
@@ -11,7 +12,7 @@ export class AppService {
 
 
   async turnOn(){
-    var LED = new Gpio(3, 'out');
+    
     if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
       LED.writeSync(1); //set pin state to 1 (turn LED on)
     } else {

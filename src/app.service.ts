@@ -24,4 +24,16 @@ export class AppService {
     }
   }
 
+  async off(){
+    var LED = new Gpio(3, 'out');
+  
+    LED.writeSync(0); //set pin state to 0 (turn LED off)
+   
+    return {
+      status:'200',
+      message:'Success',
+      led_status:LED.readSync()
+    }
+  }
+
 }
